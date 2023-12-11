@@ -1,0 +1,26 @@
+typedef struct Node {
+  double data;
+  struct Node *next;
+} Node;
+
+struct Stack {
+  Node *top;
+};
+
+void push(struct Stack *stack, double data) {
+  // Allocate memory for a new node
+  Node *newNode = (Node *)malloc(sizeof(Node));
+
+  // Check for memory allocation failure
+  if (!newNode) {
+    printf("Failed to allocate memory for new node.\n");
+    return;
+  }
+
+  // Store the data in the new node
+  newNode->data = data;
+
+  // Make the new node the new top of the stack
+  newNode->next = stack->top;
+  stack->top = newNode;
+}
